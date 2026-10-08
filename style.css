@@ -9,32 +9,28 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Iosevka Charon Mono", monospace !important;
 }
 
 body {
+    font-family: "Iosevka Charon Mono", monospace;
     color: #3a2a1a;
     overflow-x: hidden;
-}
-
-/* темы */
-/* светлая по умолчанию */
-body {
+    /* Светлая тема по умолчанию */
     --nav-color: #5a3a2a;
     --title-color: #4a2a1a;
     --card-bg: rgba(240, 220, 215, 0.92);
     --overlay: linear-gradient(180deg, rgba(255,180,120,0.15), rgba(255,120,90,0.25));
 }
 
-/* темная (типо закат) */
-body.dark {
+/* Темная тема (модификатор на body) */
+body.body--dark {
     --nav-color: #eaf3ff;
     --title-color: #ffffff;
     --card-bg: rgba(140, 200, 220, 0.92);
     --overlay: linear-gradient(180deg, rgba(80,160,220,0.15), rgba(40,100,180,0.25));
 }
 
-/* фон экраны */
+/* Блок screen */
 .screen {
     position: relative;
     min-height: 100vh;
@@ -49,15 +45,15 @@ body.dark {
     transition: filter 0.6s ease;
 }
 
-/* светлые фоны день */
-.screen-1 { background-image: url('images/backgrounds/bl_doroga_den.png'); }
-.screen-2 { background-image: url('images/backgrounds/bl_genda_den.png'); }
-.screen-3 { background-image: url('images/backgrounds/bl_pristan_den.png'); }
+/* Модификаторы экранов для светлой темы */
+.screen--first { background-image: url('images/backgrounds/bl_doroga_den.png'); }
+.screen--second { background-image: url('images/backgrounds/bl_genda_den.png'); }
+.screen--third { background-image: url('images/backgrounds/bl_pristan_den.png'); }
 
-/* темные фоны закат */
-body.dark .screen-1 { background-image: url('images/backgrounds/bl_doroga_vecher.png'); }
-body.dark .screen-2 { background-image: url('images/backgrounds/bl_genda_vecher.png'); }
-body.dark .screen-3 { background-image: url('images/backgrounds/bl_pristan_vecher.png'); }
+/* Модификаторы экранов для темной темы */
+body.body--dark .screen--first { background-image: url('images/backgrounds/bl_doroga_vecher.png'); }
+body.body--dark .screen--second { background-image: url('images/backgrounds/bl_genda_vecher.png'); }
+body.body--dark .screen--third { background-image: url('images/backgrounds/bl_pristan_vecher.png'); }
 
 .screen::before {
     content: '';
@@ -74,7 +70,7 @@ body.dark .screen-3 { background-image: url('images/backgrounds/bl_pristan_veche
     z-index: 1;
 }
 
-/* навигация */
+/* Блок навигации nav */
 .nav {
     display: flex;
     gap: 40px;
@@ -82,17 +78,17 @@ body.dark .screen-3 { background-image: url('images/backgrounds/bl_pristan_veche
     padding-top: 10px;
 }
 
-.nav a {
+.nav__link {
     color: var(--nav-color);
     text-decoration: underline;
     font-size: 15px;
     transition: opacity 0.3s;
 }
 
-.nav a:hover { opacity: 0.6; }
+.nav__link:hover { opacity: 0.6; }
 
-/* заголовеки */
-.title {
+/* Общий блок заголовков (используется внутри других блоков) */
+.hero-content__title, .gallery-header__title, .memory-header__title {
     font-size: 42px;
     font-weight: normal;
     color: var(--title-color);
@@ -102,14 +98,14 @@ body.dark .screen-3 { background-image: url('images/backgrounds/bl_pristan_veche
     transition: color 0.6s;
 }
 
-.subtitle {
+.hero-content__subtitle, .gallery-header__subtitle, .memory-header__subtitle {
     font-size: 15px;
     color: var(--title-color);
     opacity: 0.85;
     transition: color 0.6s;
 }
 
-/* первый экран */
+/* Блок первого экрана hero-content */
 .hero-content {
     display: flex;
     flex-direction: column;
@@ -130,7 +126,8 @@ body.dark .screen-3 { background-image: url('images/backgrounds/bl_pristan_veche
 
 .sun-btn:hover { transform: rotate(90deg) scale(1.2); }
 
-.photografies {
+/* Блок фотокарточек photo-cards */
+.photo-cards {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
@@ -140,25 +137,23 @@ body.dark .screen-3 { background-image: url('images/backgrounds/bl_pristan_veche
     max-width: 900px;
 }
 
-.photografy {
+.photo-cards__item {
     background: #fff;
     padding: 10px 10px 35px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-    transition: transform 0.4s ease, opacity 0.8s ease;
     width: 200px;
     transform: rotate(var(--rot, 0deg)) translateY(var(--anim-y, 0px));
 }
 
-.photografy img {
+.photo-cards__image {
     width: 100%;
     height: 160px;
     object-fit: cover;
     display: block;
-    /* исправляет внутренний поворот картинки от камеры телефона */
     image-orientation: from-image !important;
 }
 
-.photografy span {
+.photo-cards__caption {
     display: block;
     text-align: center;
     font-size: 12px;
@@ -166,8 +161,8 @@ body.dark .screen-3 { background-image: url('images/backgrounds/bl_pristan_veche
     margin-top: 8px;
 }
 
-/* второй экран */
-.gallery-header {
+/* Блоки заголовков галереи и воспоминаний */
+.gallery-header, .memory-header {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -175,7 +170,8 @@ body.dark .screen-3 { background-image: url('images/backgrounds/bl_pristan_veche
     margin-bottom: 40px;
 }
 
-.slider-frame {
+/* Блок слайдера slider */
+.slider {
     display: flex;
     align-items: center;
     gap: 20px;
@@ -183,10 +179,9 @@ body.dark .screen-3 { background-image: url('images/backgrounds/bl_pristan_veche
     padding: 30px 40px;
     border-radius: 4px;
     position: relative;
-    transition: transform 0.8s ease, opacity 0.8s ease;
 }
 
-.slider-frame img {
+.slider__image {
     width: 700px;
     max-width: 70vw;
     height: 450px;
@@ -195,14 +190,12 @@ body.dark .screen-3 { background-image: url('images/backgrounds/bl_pristan_veche
     box-shadow: 0 10px 40px rgba(0,0,0,0.4);
     border: 12px solid #ffffff;
     transition: opacity 0.4s ease;
-
-    /* заставляем браузер учитывать правильную ориентацию кадра со смартфона */
     image-orientation: from-image !important;
 }
 
-.slider-frame img.fade { opacity: 0; }
+.slider__image--fade { opacity: 0; }
 
-.arrow {
+.slider__arrow {
     background: none;
     border: none;
     font-size: 40px;
@@ -213,7 +206,7 @@ body.dark .screen-3 { background-image: url('images/backgrounds/bl_pristan_veche
     user-select: none;
 }
 
-.arrow:hover { transform: scale(1.3); }
+.slider__arrow:hover { transform: scale(1.3); }
 
 .slider-label {
     margin-top: 20px;
@@ -222,49 +215,41 @@ body.dark .screen-3 { background-image: url('images/backgrounds/bl_pristan_veche
     transition: color 0.6s;
 }
 
-/* третий экран */
-.memory-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 40px;
-}
-
+/* Блок карточки воспоминаний memory-card */
 .memory-card {
     background: var(--card-bg);
     padding: 35px 45px;
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     max-width: 640px;
-    transition: background 0.6s, transform 0.8s ease, opacity 0.8s ease;
+    transition: background 0.6s;
 }
 
-.memory-card ul {
-    list-style: none;
-}
+.memory-card__list { list-style: none; }
 
-.memory-card li {
+.memory-card__item {
     font-size: 19px;
     line-height: 2;
     color: #3a2a1a;
 }
 
-/* назначение CSS-переменной анимации */
-.slider-frame, .memory-card, .hero-content, .gallery-header, .memory-header {
+/* Общие правила анимации (вынесли из JS в чистый CSS для производительности) */
+.slider, .memory-card, .hero-content, .gallery-header, .memory-header, .photo-cards__item {
     transform: translateY(var(--anim-y, 0px));
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-/* адаптивчик */
+/* Адаптив */
 @media (max-width: 768px) {
-    .title { font-size: 28px; }
+    .screen { background-attachment: scroll; } /* Фикс лагов фона на смартфонах */
+    .hero-content__title, .gallery-header__title, .memory-header__title { font-size: 28px; }
     .nav { gap: 20px; }
-    .nav a { font-size: 13px; }
-    .photografy { width: 140px; }
-    .photografy img { height: 120px; }
-    .slider-frame { padding: 15px; gap: 10px; }
-    .slider-frame img { height: 260px; border-width: 8px; }
-    .arrow { font-size: 28px; }
+    .nav__link { font-size: 13px; }
+    .photo-cards__item { width: 140px; }
+    .photo-cards__image { height: 120px; }
+    .slider { padding: 15px; gap: 10px; }
+    .slider__image { height: 260px; border-width: 8px; }
+    .slider__arrow { font-size: 28px; }
     .memory-card { padding: 25px; }
-    .memory-card li { font-size: 16px; }
+    .memory-card__item { font-size: 16px; }
 }
