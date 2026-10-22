@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Как я провел лето</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Первый экран (Блок screen с модификатором --first) -->
+    <section class="screen screen--first" id="screen1">
+        <nav class="nav">
+            <a class="nav__link" href="#screen1">Главная</a>
+            <a class="nav__link" href="#screen2">Фотографии</a>
+            <a class="nav__link" href="#screen3">Воспоминания</a>
+        </nav>
+
+        <div class="hero-content">
+            <h1 class="hero-content__title">Как я провел лето</h1>
+            <button id="theme" class="sun-btn" title="Сменить тему">☀</button>
+            <p class="hero-content__subtitle">Самое яркое лето — лето 2026</p>
+        </div>
+
+        <!-- Независимый блок фотокарточек (исправили опечатку) -->
+        <div class="photo-cards">
+            <div class="photo-cards__item" style="--rot: -6deg;">
+                <img class="photo-cards__image" src="images/pictures/child_camp_pic.png" alt="2смена_ЗвездныйБриз">
+                <span class="photo-cards__caption">#2смена_ЗвездныйБриз</span>
+            </div>
+            <div class="photo-cards__item" style="--rot: 3deg;">
+                <img class="photo-cards__image" src="images/pictures/saxophone_pic.png" alt="ловимомент">
+                <span class="photo-cards__caption">#ловимомент</span>
+            </div>
+            <div class="photo-cards__item" style="--rot: -4deg;">
+                <img class="photo-cards__image" src="images/pictures/brother_pic.png" alt="Брат">
+                <span class="photo-cards__caption">#брат</span>
+            </div>
+            <div class="photo-cards__item" style="--rot: 5deg;">
+                <img class="photo-cards__image" src="images/pictures/in_train_pic.png" alt="дорогадомой">
+                <span class="photo-cards__caption">#дорогадомой</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Второй экран -->
+    <section class="screen screen--second" id="screen2">
+        <nav class="nav">
+            <a class="nav__link" href="#screen1">Главная</a>
+            <a class="nav__link" href="#screen2">Фотографии</a>
+            <a class="nav__link" href="#screen3">Воспоминания</a>
+        </nav>
+
+        <div class="gallery-header">
+            <h2 class="gallery-header__title">Фотографии, которые греют душу</h2>
+            <p class="gallery-header__subtitle">Мой личный фотоальбом</p>
+        </div>
+
+        <!-- Независимый блок слайдера -->
+        <div class="slider">
+            <button class="slider__arrow slider__arrow--left" onclick="changeSlide(-1)">‹</button>
+            <img id="slider-image" class="slider__image" src="images/pictures/child_camp_pic.png" alt="Фото">
+            <button class="slider__arrow slider__arrow--right" onclick="changeSlide(1)">›</button>
+        </div>
+        <p class="slider-label">Листай вперед-назад</p>
+    </section>
+
+    <!-- Третий экран -->
+    <section class="screen screen--third" id="screen3">
+        <nav class="nav">
+            <a class="nav__link" href="#screen1">Главная</a>
+            <a class="nav__link" href="#screen2">Фотографии</a>
+            <a class="nav__link" href="#screen3">Воспоминания</a>
+        </nav>
+
+        <div class="memory-header">
+            <h2 class="memory-header__title">Этим летом произошло...</h2>
+            <p class="memory-header__subtitle">Что было этим летом?</p>
+        </div>
+
+        <!-- Блок карточки воспоминаний -->
+        <div class="memory-card">
+            <ul class="memory-card__list">
+                <li class="memory-card__item">🏙 Я побывал в родном городе</li>
+                <li class="memory-card__item">🏕 Отработал одну смену в детском лагере</li>
+                <li class="memory-card__item">🔨 Построил с отцом баню</li>
+                <li class="memory-card__item">👨‍👩‍👧 Проводил время с младшими братом и сестрой</li>
+                <li class="memory-card__item">🎷 Играл на саксофоне на набережной для души</li>
+                <li class="memory-card__item">💻 Проходил стажировку в IT-компанию</li>
+                <li class="memory-card__item">☀ ...и просто провел это лето от души</li>
+            </ul>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
