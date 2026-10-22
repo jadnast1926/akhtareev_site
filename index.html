@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Первый экран (Блок screen с модификатором --first) -->
     <section class="screen screen--first" id="screen1">
         <nav class="nav">
             <a class="nav__link" href="#screen1">Главная</a>
@@ -15,13 +14,12 @@
             <a class="nav__link" href="#screen3">Воспоминания</a>
         </nav>
 
-        <div class="hero-content">
-            <h1 class="hero-content__title">Как я провел лето</h1>
-            <button id="theme" class="sun-btn" title="Сменить тему">☀</button>
-            <p class="hero-content__subtitle">Самое яркое лето — лето 2026</p>
+        <div class="screen__hero">
+            <h1 class="screen__title">Как я провел лето</h1>
+            <button id="theme" class="screen__theme-btn" title="Сменить тему">☀</button>
+            <p class="screen__subtitle">Самое яркое лето — лето 2026</p>
         </div>
 
-        <!-- Независимый блок фотокарточек (исправили опечатку) -->
         <div class="photo-cards">
             <div class="photo-cards__item" style="--rot: -6deg;">
                 <img class="photo-cards__image" src="images/pictures/child_camp_pic.png" alt="2смена_ЗвездныйБриз">
@@ -42,7 +40,6 @@
         </div>
     </section>
 
-    <!-- Второй экран -->
     <section class="screen screen--second" id="screen2">
         <nav class="nav">
             <a class="nav__link" href="#screen1">Главная</a>
@@ -50,21 +47,19 @@
             <a class="nav__link" href="#screen3">Воспоминания</a>
         </nav>
 
-        <div class="gallery-header">
-            <h2 class="gallery-header__title">Фотографии, которые греют душу</h2>
-            <p class="gallery-header__subtitle">Мой личный фотоальбом</p>
+        <div class="section-header">
+            <h2 class="section-header__title">Фотографии, которые греют душу</h2>
+            <p class="section-header__subtitle">Мой личный фотоальбом</p>
         </div>
 
-        <!-- Независимый блок слайдера -->
         <div class="slider">
             <button class="slider__arrow slider__arrow--left" onclick="changeSlide(-1)">‹</button>
             <img id="slider-image" class="slider__image" src="images/pictures/child_camp_pic.png" alt="Фото">
             <button class="slider__arrow slider__arrow--right" onclick="changeSlide(1)">›</button>
+            <p class="slider__label">Листай вперед-назад</p>
         </div>
-        <p class="slider-label">Листай вперед-назад</p>
     </section>
 
-    <!-- Третий экран -->
     <section class="screen screen--third" id="screen3">
         <nav class="nav">
             <a class="nav__link" href="#screen1">Главная</a>
@@ -72,12 +67,11 @@
             <a class="nav__link" href="#screen3">Воспоминания</a>
         </nav>
 
-        <div class="memory-header">
-            <h2 class="memory-header__title">Этим летом произошло...</h2>
-            <p class="memory-header__subtitle">Что было этим летом?</p>
+        <div class="section-header">
+            <h2 class="section-header__title">Этим летом произошло...</h2>
+            <p class="section-header__subtitle">Что было этим летом?</p>
         </div>
 
-        <!-- Блок карточки воспоминаний -->
         <div class="memory-card">
             <ul class="memory-card__list">
                 <li class="memory-card__item">🏙 Я побывал в родном городе</li>

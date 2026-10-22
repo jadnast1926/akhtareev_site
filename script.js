@@ -1,4 +1,3 @@
-// Переключение темы (БЭМ-модификатор body--dark)
 const themeBtn = document.getElementById('theme');
 
 themeBtn.addEventListener('click', () => {
@@ -6,7 +5,6 @@ themeBtn.addEventListener('click', () => {
     themeBtn.textContent = document.body.classList.contains('body--dark') ? '🌙' : '☀';
 });
 
-// Слайдер фото
 const images = [
     'images/pictures/child_camp_pic.png',
     'images/pictures/brother_pic.png',
@@ -23,28 +21,26 @@ const images = [
 ];
 
 let currentIndex = 0;
-let isSliderAnimating = false; // Защита от спам-кликов
+let isSliderAnimating = false;
 const sliderImage = document.getElementById('slider-image');
 
 function changeSlide(direction) {
-    if (isSliderAnimating) return; // Если анимация идет, клик игнорируется
+    if (isSliderAnimating) return;
     isSliderAnimating = true;
 
     currentIndex += direction;
     if (currentIndex < 0) currentIndex = images.length - 1;
     if (currentIndex >= images.length) currentIndex = 0;
 
-    // Используем БЭМ-класс анимации затухания
     sliderImage.classList.add('slider__image--fade');
 
     setTimeout(() => {
         sliderImage.src = images[currentIndex];
         sliderImage.classList.remove('slider__image--fade');
-        isSliderAnimating = false; // Освобождаем слайдер для новых кликов
+        isSliderAnimating = false;
     }, 400);
 }
 
-// Плавный скролл по БЭМ-ссылкам nav__link
 document.querySelectorAll('.nav__link').forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
@@ -56,12 +52,10 @@ document.querySelectorAll('.nav__link').forEach(link => {
     });
 });
 
-// Появление элементов при скролле (БЭМ-селекторы)
 const animatedItems = document.querySelectorAll(
-    '.photo-cards__item, .slider, .memory-card, .hero-content, .gallery-header, .memory-header'
+    '.photo-cards__item, .slider, .memory-card, .screen__hero, .section-header'
 );
 
-// Задаем только начальное состояние. Свойства transition теперь контролирует сам CSS!
 animatedItems.forEach(item => {
     item.style.opacity = '0';
     item.style.setProperty('--anim-y', '30px');
@@ -73,7 +67,7 @@ const observer = new IntersectionObserver((entries) => {
             const item = entry.target;
             item.style.opacity = '1';
             item.style.setProperty('--anim-y', '0px');
-            observer.unobserve(item); // Фикс производительности: прекращаем слежку после появления
+            observer.unobserve(item);
         }
     });
 }, { threshold: 0.15 });
